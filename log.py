@@ -12,9 +12,9 @@ def create_log(data_contact: list,name_log_file: str="log.txt", log_massage:str 
     current_datetime = str(datetime.now())   
     log_item = current_datetime+' '+str(data_contact)+' '+log_massage+'\n'
     #print(log_item)
-    with open(name_log_file, "a") as data_file:        
+    with open(name_log_file, "a", encoding='UTF-8') as data_file:        
         data_file.write(log_item)
     data_file.close()    
 
-#data_contact = ['имя','фамилия','номер телефона','комментарий']
-#create_log(data_contact)
+data_contact = ['имя','фамилия','номер телефона','комментарий']
+create_log(data_contact)
