@@ -26,7 +26,7 @@ def start():
                 ie.menu_item_options()
                 option = ie.menu_item()
                 if option == 1:
-                    urname = str(fd.search_contact_by_surname()).lstrip("['") # возвращаем строку с искомой фамилией
+                    surname = str(fd.search_contact_by_surname()).lstrip("['") # возвращаем строку с искомой фамилией
                     surname = surname.rstrip("']")
                     ie.result_search()
                     ie.top_line()
