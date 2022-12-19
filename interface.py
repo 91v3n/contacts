@@ -2,6 +2,8 @@ from colorama import init
 init()
 from colorama import Fore, Back, Style
 import check
+import interface as ie
+
 def hello():
     '''Функция приветствия'''
     print(Fore.CYAN + Style.NORMAL + 'Вас приветствует телефонная книга' + Style.RESET_ALL)
@@ -53,21 +55,41 @@ def get_comment():
         comment = input(Fore.CYAN + Style.NORMAL + 'Введите комментарий: ' + Style.RESET_ALL).title()
     return comment
 
+def get_new_surname():
+    '''Запрашивает у пользовтеля новую фамилию'''
+    while True:
+        new_surname = input(Fore.CYAN + Style.NORMAL + 'Введите новую фамилию: ' + Style.RESET_ALL).title()
+        if check.Check_name(new_surname):
+            return new_surname
+        else:
+            ie.error_surname()
 
 def get_new_name():
     '''Запрашивает у пользовтеля новое имя'''
-    new_name = input(Fore.CYAN + Style.NORMAL + 'Введите новое имя: ' + Style.RESET_ALL).title()
-    return new_name
+    while True:
+        new_name = input(Fore.CYAN + Style.NORMAL + 'Введите новое имя: ' + Style.RESET_ALL).title()
+        if check.Check_name(new_name):
+            return new_name
+        else:
+            ie.error_name()
 
 def get_new_tel_num():
     '''Запрашивает у пользовтеля новый телефон'''
-    new_number = input(Fore.CYAN + Style.NORMAL + 'Введите новый номер телефона: ' + Style.RESET_ALL)
-    return new_number
+    while True:
+        new_number = input(Fore.CYAN + Style.NORMAL + 'Введите новый номер телефона: ' + Style.RESET_ALL)
+        if check.Check_telephon_number(new_number):
+            return new_number
+        else:
+            ie.error_tel_num()
 
 def get_new_comment():
     '''Запрашивает у пользовтеля новый комментарий'''
-    new_comment = input(Fore.CYAN + Style.NORMAL + 'Введите новый комментарий: ' + Style.RESET_ALL).title()
-    return new_comment
+    while True:
+        new_comment = input(Fore.CYAN + Style.NORMAL + 'Введите новый комментарий: ' + Style.RESET_ALL).title()
+        if check.Check_comment(new_comment):
+            return new_comment
+        else:
+            ie.error_comment()
 
 def error_name():
     '''Печатает ошибку, если имя введено неверно'''
@@ -92,7 +114,12 @@ def error_menu_item():
 def error_no_contact():
     '''Печатает ошибку, если нет совпадений'''
     print(Fore.RED + Style.NORMAL + 'У вас в книге нет такого абонента' + Style.RESET_ALL)
-          
+
+def question_to_add():
+    '''Спрашивает у пользователя хочет ли он ввести ещё один контакт'''
+    question = input(Fore.CYAN + Style.NORMAL + 'Хотите ввести еще один контакт? Y/N: ' + Style.RESET_ALL)
+    return question
+            
 def create_success():
     '''Печатает об успешном создании контакта'''
     print(Fore.GREEN + Style.NORMAL + 'Контакт успешно создан.' + Style.RESET_ALL)
@@ -133,4 +160,4 @@ def delete_success():
     
 def error_delete():
     '''Печатает ошибку, если контакт не найден'''
-    print(Fore.RED + Style.NORMAL + 'Контакт не найден' + Style.RESET_ALL) 
+    print(Fore.RED + Style.NORMAL + 'Контакт не найден' + Style.RESET_ALL)
